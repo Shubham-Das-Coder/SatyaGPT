@@ -1,10 +1,4 @@
-# Model Parameter Count:
-# ---------------------------
-# Embedding Layer:      1.28M  (5000 x 256)
-# Transformer Layers:   2.46M  (4 layers, each with 614.9K)
-# Final Linear Layer:   1.28M  (256 x 5000)
-# ---------------------------
-# Total Parameters:     5.02M
+# Model Parameters = 1.3B
 
 import torch
 import torch.nn as nn
@@ -21,7 +15,7 @@ class TransformerBlock(nn.Module):
         
         self.feed_forward = nn.Sequential(
             nn.Linear(embed_size, forward_expansion * embed_size),
-            nn.ReLU(),
+            nn.GELU(),
             nn.Linear(forward_expansion * embed_size, embed_size),
         )
         
@@ -66,9 +60,9 @@ class SatyaGPT(nn.Module):
         return logits
 
 if __name__ == "__main__":
-    model = SatyaGPT(
-        vocab_size=5000, embed_size=256, num_layers=4, heads=8, 
-        forward_expansion=4, dropout=0.1, max_length=512
+    model2 = SatyaGPT(
+        vocab_size=50000, embed_size=1280, num_layers=24, heads=16, 
+        forward_expansion=4, dropout=0.1, max_length=2048  # Increased sequence length
     )
     
-    print(model)
+    print(model2)

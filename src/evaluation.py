@@ -10,7 +10,6 @@ from nltk.translate.bleu_score import sentence_bleu
 
 nltk.download("wordnet")
 
-
 class ModelEvaluator:
     def __init__(self, model, tokenizer, device="cuda" if torch.cuda.is_available() else "cpu"):
         self.model = model.to(device)
@@ -77,7 +76,6 @@ class ModelEvaluator:
         print(f"METEOR Score: {self.compute_meteor(references, predictions):.4f}")
         print(f"BERTScore: {self.compute_bert_score(references, predictions)}")
         print(f"Latency: {self.measure_latency(sample_text):.4f} seconds per inference")
-
 
 # Example Usage
 if __name__ == "__main__":
