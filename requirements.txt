@@ -1,0 +1,12 @@
+torch
+transformers
+sentencepiece
+datasets
+nltk
+rouge
+scikit-learn
+bs4
+requests
+PyMuPDF
+flash-attn
+x-transformers
