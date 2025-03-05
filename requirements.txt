@@ -10,3 +10,4 @@ requests
 PyMuPDF
 flash-attn
 x-transformers
+os
